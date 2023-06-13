@@ -2,10 +2,11 @@
     import P5 from "p5-svelte";
     import type { Sketch } from "p5-svelte";
 
-    // import { Vector } from "p5"; // This doesn't work, p5 not found: "Internal server error: Failed to resolve import "p5" from "src/routes/+page.svelte". Does the file exist?"
-    // import { Vector as p5Vector } from "p5"; // This doesn't work. Same message.
+    import type { Vector } from "p5"; // import the type Vector from p5 - that works great, as @types/p5 is installed (see package.json)
 
-    import type { Vector } from "p5";
+    // import { Vector } from "p5"; // This doesn't work, p5 not found: "Internal server error: Failed to resolve import "p5" from "src/routes/+page.svelte". Does the file exist?"
+
+    // import { Vector as p5Vector } from "p5"; // This doesn't work. Same message.
 
     let width = 55;
     let height = 55;
@@ -13,7 +14,7 @@
     const sketch: Sketch = (p5) => {
         p5.setup = () => {
             p5.createCanvas(400, 400);
-            const myVector: Vector = p5.createVector(100, 100);
+            const myVector: Vector = p5.createVector(100, 100); // that works
             console.log(myVector.x);
         };
 
@@ -22,7 +23,7 @@
         };
     };
 
-    // This isn't working, "ReferenceError: Vector is not defined"
+    // Here's the problem. This isn't working, "ReferenceError: Vector is not defined". Also using p5.Vector doesn't work.
     class Node extends Vector {
         constructor(x, y) {
             super(x, y);
