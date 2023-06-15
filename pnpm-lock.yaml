@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  p5:
+    specifier: ^1.6.0
+    version: 1.6.0
   p5-svelte:
     specifier: ^3.1.2
     version: 3.1.2(@types/p5@1.6.2)(p5@1.6.0)
